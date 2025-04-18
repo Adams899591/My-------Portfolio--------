@@ -1,0 +1,40 @@
+                             /* --------------PORTFOLIO----------------- */
+                             
+/* -----image navber------ */
+#MY-image{
+    width: 200px;
+    height: 300px;
+    border-style: groove;
+    border-radius: 20px;
+}
+
+#Group-space{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+#Group-space-1{
+    /* background-color: rgba(255, 0, 0, 0.568); */
+    width: fit-content;
+}
+
+#Group-space-2{
+    /* background-color: rgba(255, 255, 0, 0.534); */
+    text-align: left;
+}
+
+
+@media (min-width: 993px){
+    #Group-space-2{
+        /* background-color: rgba(255, 255, 0, 0.534); */
+        text-align: left;
+        margin-left: -40%; 
+    }
+}
+
+#paragraph{
+   /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+   font-size: large;
+}
+
