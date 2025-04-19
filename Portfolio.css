@@ -15,19 +15,16 @@
 }
 
 #Group-space-1{
-    /* background-color: rgba(255, 0, 0, 0.568); */
     width: fit-content;
 }
 
 #Group-space-2{
-    /* background-color: rgba(255, 255, 0, 0.534); */
     text-align: left;
 }
 
 
 @media (min-width: 993px){
     #Group-space-2{
-        /* background-color: rgba(255, 255, 0, 0.534); */
         text-align: left;
         margin-left: -40%; 
     }
