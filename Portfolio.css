@@ -41,4 +41,9 @@
 }
 
 
+/* ---------help to slow AOS better------------- */
+[data-aos][data-aos][data-aos-duration= "7000"]{
+    transition-duration: 7000ms;
+}
+
 
