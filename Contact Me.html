@@ -95,21 +95,25 @@
      <form data-aos="fade-up"   data-aos-duration="5000" >
         <!-- ---input---- -->
         <div class="form-floating w-75">
-            <input class="form-control form-control-sm"  type="text" placeholder="000000" >
+            <input id="Fullname" class="form-control form-control-sm"  type="text" placeholder="000000" required >
             <label for=""><b>Full Name</b></label>
         </div><br>
 
         <!-- ---input---- -->
         <div class="form-floating w-75">
-            <input class="form-control form-control-sm"  type="text" placeholder="000000" >
+            <input id="Email" class="form-control form-control-sm"  type="text" placeholder="000000" required>
             <label for=""><b>Emali</b></label>
         </div><br>
 
         <!-- ---input---- -->
         <div class="form-floating w-75">
-            <textarea class="form-control form-control-sm"  style="width: 400px; height: 100px;" name="" id="" placeholder="000000"></textarea>
+            <textarea id="Massage" class="form-control form-control-sm"  style="width: 400px; height: 100px;" name=""  placeholder="000000" required></textarea>
             <label for=""><b>Massage</b></label>
         </div>
+
+        <br>
+        <p id="DisplayMassage"></p>
+        <button id="Submit" class="btn btn-primary">Submit</button>
       
      </form>
 
@@ -136,3 +140,73 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+<!-- ----CSS----- -->
+<style>
+#DisplayMassage{
+  font-size: large;
+}
+</style>
+
+<!-- ---------javascript---------- -->
+ <script>
+    const Fullname =  document.getElementById("Fullname");
+    const Email = document.getElementById("Email");
+    let Massage = document.getElementById("Massage");
+    document.getElementById("Massage")
+     document.getElementById("Submit");
+    const DisplayMassage = document.getElementById("DisplayMassage")
+
+    // when th submit butten is clicked 
+    document.getElementById("Submit").onclick = function () {
+              //  -----privent the form from refreaching the page --------
+                  event.preventDefault();
+
+                 
+      if (Fullname.value == "" || Email.value == "" || Massage.value == "") {  
+        DisplayMassage.style.color = "red"                              // ---------code to validate first name --------
+        DisplayMassage.textContent = "This field can not be empty"
+      }else if(!Fullname.value.includes(" ") ){
+        DisplayMassage.style.color = "red" 
+        DisplayMassage.textContent = "Please enter your fullname with a space between first name and last name. "
+      }else if (!Email.value.includes("@") ) {   
+        DisplayMassage.style.color = "red"                                        // // ---------code to validate Email -----
+        DisplayMassage.textContent = "Email must contain `@` symbole. "
+      }else{
+        DisplayMassage.style.color = "green"
+
+                   DisplayMassage.textContent = "Checking input... "
+            
+            setTimeout(() => {
+                   DisplayMassage.textContent = "Verifying format... "
+            }, 4000); 
+
+            setTimeout(() => {
+                   DisplayMassage.textContent = "Validating information... "
+            }, 6000);
+
+            setTimeout(() => {
+                   DisplayMassage.textContent = "Confirming with server... "
+            }, 8000);
+
+            setTimeout(() => {
+                   DisplayMassage.textContent = "Finalizing process... "
+            }, 12000);
+
+            setTimeout(() => {
+              Massage.value = ""
+              Fullname.value = " "
+              Email.value = " "
+                   DisplayMassage.textContent = "All information Surcessfully accepted! " 
+            }, 14000);
+
+            setTimeout(() => {
+                     DisplayMassage.textContent = ""
+            }, 18000); 
+
+         
+           
+      }                         
+    
+      
+    }
+ </script>
