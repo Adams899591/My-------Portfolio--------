@@ -1,3 +1,4 @@
+<?php   session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +53,7 @@
                   </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active"  aria-current="page" href="Contact Me.html"><b> <i class="fa-brands fa-viber" style="color: black;"></i> &nbsp;&nbsp; Contact Me</b></a>
+                    <a class="nav-link active"  aria-current="page" href="Contact Me.php"><b> <i class="fa-brands fa-viber" style="color: black;"></i> &nbsp;&nbsp; Contact Me</b></a>
                 </li>
 
               </ul>
@@ -91,29 +92,46 @@
      <br><br>
       <label id="paragraph" for=""><b>Contact Form:</b></label> <br><br>
 
-<!-- --------the form ------------ -->
-     <form data-aos="fade-up"   data-aos-duration="5000" >
+<!-- --------the form ------------ --> 
+     <form id="FormSubmit" action="portfolio view.php" method="post" data-aos="fade-up"   data-aos-duration="5000" >
         <!-- ---input---- -->
         <div class="form-floating w-75">
-            <input id="Fullname" class="form-control form-control-sm"  type="text" placeholder="000000" required >
+            <input id="Fullname" class="form-control form-control-sm"  type="text" placeholder="000000" name="FullName" >
             <label for=""><b>Full Name</b></label>
         </div><br>
 
         <!-- ---input---- -->
         <div class="form-floating w-75">
-            <input id="Email" class="form-control form-control-sm"  type="text" placeholder="000000" required>
-            <label for=""><b>Emali</b></label>
+            <input id="Email" class="form-control form-control-sm"  type="text" placeholder="000000" name="Emali">
+            <label for=""><b>Email</b></label>
         </div><br>
 
         <!-- ---input---- -->
         <div class="form-floating w-75">
-            <textarea id="Massage" class="form-control form-control-sm"  style="width: 400px; height: 100px;" name=""  placeholder="000000" required></textarea>
-            <label for=""><b>Massage</b></label>
+            <textarea id="Massage" class="form-control form-control-sm"  style="width: 400px; height: 100px;" name="Message"  placeholder="000000"></textarea>
+            <label for=""><b>Message</b></label>
         </div>
 
         <br>
         <p id="DisplayMassage"></p>
-        <button id="Submit" class="btn btn-primary">Submit</button>
+
+        <?php
+                 if (isset($_GET["x"])) {
+                  echo "<p style='color: red;'> {$_GET['x']} </p>";
+                 }
+                 if (isset($_GET["z"])) {
+                  echo "<p style='color: red;'> {$_GET['z']} </p>";
+                 }
+                 if (isset($_GET["y"])) {
+                 echo "<p style='color: red;'> {$_GET['y']} </p>";
+                 }
+
+              //  if (isset($_GET["n"])) {
+              //   echo "<p style='color: green;'> {$_GET['n']} </p>";
+              //  }
+        
+        ?>
+        <button id="bntSubmit" class="btn btn-primary">Submit</button>
       
      </form>
 
@@ -153,11 +171,12 @@
     const Email = document.getElementById("Email");
     let Massage = document.getElementById("Massage");
     document.getElementById("Massage")
-     document.getElementById("Submit");
-    const DisplayMassage = document.getElementById("DisplayMassage")
+     document.getElementById("bntSubmit");
+    const DisplayMassage = document.getElementById("DisplayMassage");
+   const form = document.getElementById("FormSubmit");
 
     // when th submit butten is clicked 
-    document.getElementById("Submit").onclick = function () {
+    document.getElementById("bntSubmit").onclick = function () {
               //  -----privent the form from refreaching the page --------
                   event.preventDefault();
 
@@ -165,10 +184,12 @@
       if (Fullname.value == "" || Email.value == "" || Massage.value == "") {  
         DisplayMassage.style.color = "red"                              // ---------code to validate first name --------
         DisplayMassage.textContent = "This field can not be empty"
-      }else if(!Fullname.value.includes(" ") ){
+      }
+      else if(!Fullname.value.includes(" ") ){
         DisplayMassage.style.color = "red" 
         DisplayMassage.textContent = "Please enter your fullname with a space between first name and last name. "
-      }else if (!Email.value.includes("@") ) {   
+      }
+      else if (!Email.value.includes("@") ) {   
         DisplayMassage.style.color = "red"                                        // // ---------code to validate Email -----
         DisplayMassage.textContent = "Email must contain `@` symbole. "
       }else{
@@ -193,14 +214,15 @@
             }, 12000);
 
             setTimeout(() => {
-              Massage.value = ""
-              Fullname.value = " "
-              Email.value = " "
+              // Massage.value = ""
+              // Fullname.value = " "
+              // Email.value = " "
                    DisplayMassage.textContent = "All information Surcessfully accepted! " 
             }, 14000);
 
             setTimeout(() => {
-                     DisplayMassage.textContent = ""
+                    //  DisplayMassage.textContent = ""
+                    form.submit();
             }, 18000); 
 
          
@@ -210,3 +232,12 @@
       
     }
  </script>
+
+
+<?php
+
+
+
+
+
+?>
